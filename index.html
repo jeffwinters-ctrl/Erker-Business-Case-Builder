@@ -9,42 +9,52 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #ffffff;
-      --bg2: #f7f7f5;
-      --bg3: #f0efe9;
-      --text: #1a1a18;
-      --text2: #5f5e5a;
-      --text3: #888780;
-      --border: rgba(0,0,0,0.12);
-      --border2: rgba(0,0,0,0.22);
-      --blue: #185FA5;
-      --blue-light: #E6F1FB;
-      --blue-dark: #0C447C;
-      --blue-mid: #B5D4F4;
-      --green: #0F6E56;
-      --green-light: #5DCAA5;
-      --amber: #854F0B;
+      --bg: #111827;
+      --bg2: #1a2235;
+      --bg3: #0b1120;
+      --text: #f0f2f5;
+      --text2: #9ca3b0;
+      --text3: #6b7280;
+      --border: rgba(255,255,255,0.08);
+      --border2: rgba(255,255,255,0.16);
+      --accent: #31c48d;
+      --accent-dim: rgba(49,196,141,0.12);
+      --accent-text: #31c48d;
+      --blue: #3b82f6;
+      --blue-light: rgba(59,130,246,0.10);
+      --blue-dark: #93bbfd;
+      --blue-mid: rgba(59,130,246,0.25);
+      --green: #31c48d;
+      --green-light: #22d3a7;
+      --amber: #f59e0b;
+      --orange: #f46f0a;
+      --orange-dim: rgba(244,111,10,0.12);
       --radius: 8px;
       --radius-lg: 12px;
     }
 
-    @media (prefers-color-scheme: dark) {
+    @media (prefers-color-scheme: light) {
       :root {
-        --bg: #1c1c1a;
-        --bg2: #252522;
-        --bg3: #2e2e2b;
-        --text: #f0efe9;
-        --text2: #b4b2a9;
-        --text3: #888780;
-        --border: rgba(255,255,255,0.12);
-        --border2: rgba(255,255,255,0.22);
-        --blue: #378ADD;
-        --blue-light: #0c2d4f;
-        --blue-dark: #85B7EB;
-        --blue-mid: #185FA5;
-        --green: #5DCAA5;
-        --green-light: #1D9E75;
-        --amber: #EF9F27;
+        --bg: #ffffff;
+        --bg2: #f1f5f9;
+        --bg3: #e8ecf1;
+        --text: #111827;
+        --text2: #4b5563;
+        --text3: #6b7280;
+        --border: rgba(0,0,0,0.10);
+        --border2: rgba(0,0,0,0.18);
+        --accent: #059669;
+        --accent-dim: rgba(5,150,105,0.08);
+        --accent-text: #047857;
+        --blue: #2563eb;
+        --blue-light: rgba(37,99,235,0.06);
+        --blue-dark: #1d4ed8;
+        --blue-mid: rgba(37,99,235,0.18);
+        --green: #059669;
+        --green-light: #10b981;
+        --amber: #d97706;
+        --orange: #ea580c;
+        --orange-dim: rgba(234,88,12,0.08);
       }
     }
 
@@ -67,21 +77,34 @@
     .header {
       text-align: center;
       margin-bottom: 2rem;
-      padding: 2rem 1rem 1.5rem;
-      background: var(--bg);
+      padding: 2.5rem 1.5rem 2rem;
+      background: linear-gradient(135deg, var(--bg) 0%, #162033 100%);
       border-radius: var(--radius-lg);
       border: 0.5px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(49,196,141,0.08) 0%, transparent 70%);
+      pointer-events: none;
     }
     .header-eyebrow {
       font-size: 11px;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--text3);
-      margin-bottom: 0.5rem;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+      font-weight: 600;
     }
     .header h1 {
-      font-size: 26px;
-      font-weight: 600;
+      font-size: 28px;
+      font-weight: 700;
       color: var(--text);
       margin-bottom: 0.5rem;
       line-height: 1.2;
@@ -89,6 +112,19 @@
     .header p {
       font-size: 14px;
       color: var(--text2);
+    }
+    .header-logo {
+      display: inline-block;
+      margin-bottom: 0.75rem;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+    .header-logo span { color: var(--accent); }
+
+    @media (prefers-color-scheme: light) {
+      .header { background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%); }
     }
 
     /* Panels */
@@ -103,9 +139,9 @@
       font-size: 11px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--text3);
+      color: var(--accent);
       margin-bottom: 0.85rem;
-      font-weight: 500;
+      font-weight: 600;
     }
 
     /* Segment tabs */
@@ -126,7 +162,7 @@
       font-family: inherit;
     }
     .seg-tab:hover { border-color: var(--border2); }
-    .seg-tab.active { background: var(--blue); border-color: var(--blue); color: #fff; }
+    .seg-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
 
     /* Industry grid */
     .ind-grid {
@@ -145,11 +181,11 @@
       font-family: inherit;
     }
     .ind-btn:hover { border-color: var(--border2); }
-    .ind-btn.active { border: 1.5px solid var(--blue); background: var(--blue-light); }
+    .ind-btn.active { border: 1.5px solid var(--accent); background: var(--accent-dim); }
     .ind-btn .iname { font-size: 12px; font-weight: 500; color: var(--text); display: block; margin-bottom: 2px; }
     .ind-btn .imult { font-size: 11px; color: var(--text3); }
-    .ind-btn.active .iname { color: var(--blue-dark); }
-    .ind-btn.active .imult { color: var(--blue); }
+    .ind-btn.active .iname { color: var(--accent-text); }
+    .ind-btn.active .imult { color: var(--accent); }
 
     /* Channel grid */
     .svc-grid {
@@ -168,11 +204,11 @@
       font-family: inherit;
     }
     .svc-btn:hover { border-color: var(--border2); }
-    .svc-btn.active { border: 1.5px solid var(--blue); background: var(--blue-light); }
+    .svc-btn.active { border: 1.5px solid var(--accent); background: var(--accent-dim); }
     .svc-btn .sname { font-size: 12px; font-weight: 500; color: var(--text); display: block; margin-bottom: 2px; }
     .svc-btn .smult { font-size: 11px; color: var(--text3); }
-    .svc-btn.active .sname { color: var(--blue-dark); }
-    .svc-btn.active .smult { color: var(--blue); }
+    .svc-btn.active .sname { color: var(--accent-text); }
+    .svc-btn.active .smult { color: var(--accent); }
 
     /* Sliders */
     .sl-row {
@@ -197,10 +233,20 @@
       width: 18px;
       height: 18px;
       border-radius: 50%;
-      background: var(--blue);
+      background: var(--accent);
       cursor: pointer;
+      box-shadow: 0 0 0 3px rgba(49,196,141,0.2);
     }
-    .sl-val { font-size: 13px; font-weight: 500; color: var(--text); min-width: 100px; text-align: right; }
+    .sl-row input[type=range]::-moz-range-thumb {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--accent);
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 0 0 3px rgba(49,196,141,0.2);
+    }
+    .sl-val { font-size: 13px; font-weight: 600; color: var(--text); min-width: 100px; text-align: right; }
 
     /* Metric cards */
     .metrics {
@@ -213,12 +259,13 @@
       .metrics { grid-template-columns: repeat(2, 1fr); }
     }
     .met {
-      background: var(--bg2);
+      background: var(--bg);
+      border: 0.5px solid var(--border);
       border-radius: var(--radius);
       padding: 0.9rem;
     }
-    .met-label { font-size: 11px; color: var(--text2); margin-bottom: 5px; line-height: 1.3; }
-    .met-val { font-size: 20px; font-weight: 600; color: var(--text); }
+    .met-label { font-size: 11px; color: var(--text2); margin-bottom: 5px; line-height: 1.3; text-transform: uppercase; letter-spacing: 0.04em; }
+    .met-val { font-size: 20px; font-weight: 700; color: var(--text); }
     .met-val.green { color: var(--green); }
     .met-val.blue { color: var(--blue); }
     .met-val.amber { color: var(--amber); }
@@ -237,24 +284,28 @@
       transition: all 0.15s;
       font-family: inherit;
     }
-    .vtab.active { background: var(--blue); border-color: var(--blue); color: #fff; }
+    .vtab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
 
     /* Bar chart */
     .bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 9px; }
     .bar-lbl { font-size: 12px; color: var(--text2); min-width: 90px; text-align: right; }
     .bar-track { flex: 1; height: 26px; background: var(--bg2); border-radius: 4px; overflow: hidden; }
     .bar-fill { height: 100%; border-radius: 4px; display: flex; align-items: center; padding-left: 8px; transition: width 0.4s ease; }
-    .bar-txt { font-size: 11px; font-weight: 500; white-space: nowrap; }
+    .bar-txt { font-size: 11px; font-weight: 600; white-space: nowrap; }
 
     /* Explain box */
     .explain {
-      background: var(--blue-light);
-      border: 0.5px solid var(--blue-mid);
+      background: var(--accent-dim);
+      border: 0.5px solid rgba(49,196,141,0.25);
       border-radius: var(--radius);
       padding: 0.85rem 1rem;
       margin-bottom: 1rem;
     }
-    .explain p { font-size: 13px; color: var(--blue-dark); line-height: 1.6; }
+    .explain p { font-size: 13px; color: var(--accent-text); line-height: 1.6; }
+
+    @media (prefers-color-scheme: light) {
+      .explain p { color: #065f46; }
+    }
 
     /* Chart legend */
     .legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12px; color: var(--text2); margin-bottom: 0.5rem; }
@@ -276,24 +327,25 @@
     .export-bar p { font-size: 13px; color: var(--text2); }
     .export-btn {
       padding: 8px 20px;
-      background: var(--blue);
+      background: var(--orange);
       border: none;
       border-radius: var(--radius);
       color: #fff;
       font-size: 13px;
+      font-weight: 600;
       cursor: pointer;
       font-family: inherit;
       white-space: nowrap;
-      transition: background 0.15s;
+      transition: all 0.15s;
     }
-    .export-btn:hover { background: var(--blue-dark); }
+    .export-btn:hover { background: #e05d00; transform: translateY(-1px); }
 
     /* Modal */
     .modal-backdrop {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.65);
       z-index: 100;
       align-items: center;
       justify-content: center;
@@ -336,13 +388,32 @@
     }
     .copied-note { font-size: 12px; color: var(--green); text-align: right; margin-top: 0.5rem; display: none; }
 
-    /* Disclaimer */
+    /* Footer / Disclaimer */
+    .footer {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 0.5px solid var(--border);
+      text-align: center;
+    }
+    .footer-brand {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    .footer-brand span { color: var(--accent); }
+    .footer-link {
+      font-size: 12px;
+      color: var(--accent);
+      text-decoration: none;
+      margin-bottom: 0.75rem;
+      display: inline-block;
+    }
+    .footer-link:hover { text-decoration: underline; }
     .disclaimer {
       font-size: 11px;
       color: var(--text3);
       line-height: 1.6;
-      border-top: 0.5px solid var(--border);
-      padding-top: 0.85rem;
       margin-top: 0.5rem;
     }
   </style>
@@ -351,6 +422,7 @@
 <div class="wrap">
 
   <div class="header">
+    <div class="header-logo">abstrakt<span>.</span></div>
     <p class="header-eyebrow">Abstrakt Marketing Group — Creative Services</p>
     <h1>What's your creative investment worth?</h1>
     <p>Select your industry, choose your channels, and see projected returns.</p>
@@ -417,9 +489,9 @@
     <div id="vBreakdown"><div id="barChart"></div></div>
     <div id="vGrowth" style="display:none;">
       <div class="legend">
-        <span><span class="leg-dot" style="background:#1D9E75;"></span>Projected revenue</span>
-        <span><span class="leg-dot" style="background:#378ADD;"></span>Cumulative investment</span>
-        <span><span class="leg-dot" style="background:#B4B2A9;"></span>Without creative</span>
+        <span><span class="leg-dot" style="background:#31c48d;"></span>Projected revenue</span>
+        <span><span class="leg-dot" style="background:#3b82f6;"></span>Cumulative investment</span>
+        <span><span class="leg-dot" style="background:#6b7280;"></span>Without creative</span>
       </div>
       <div style="position:relative;height:240px;"><canvas id="growthChart"></canvas></div>
     </div>
@@ -431,7 +503,11 @@
     <button class="export-btn" onclick="exportSummary()">Export summary</button>
   </div>
 
-  <p class="disclaimer">Multipliers sourced from Nielsen, Magna Global, and Kantar B2B/B2C benchmarks. Industry modifiers based on vertical-specific creative performance data. Actual returns vary by market conditions, campaign execution, and sales cycle length. Projections represent revenue influenced by creative investment — not guaranteed net profit.</p>
+  <div class="footer">
+    <div class="footer-brand">abstrakt<span>.</span></div>
+    <a class="footer-link" href="https://abstraktmg.com" target="_blank" rel="noopener">abstraktmg.com</a>
+    <p class="disclaimer">Multipliers sourced from Nielsen, Magna Global, and Kantar B2B/B2C benchmarks. Industry modifiers based on vertical-specific creative performance data. Actual returns vary by market conditions, campaign execution, and sales cycle length. Projections represent revenue influenced by creative investment — not guaranteed net profit.</p>
+  </div>
 
 </div>
 
@@ -472,9 +548,9 @@
   };
 
   const svcColors = {
-    video: '#378ADD', display: '#1D9E75', ooh: '#BA7517',
-    radio: '#D4537E', print: '#888780', social: '#534AB7',
-    email: '#0F6E56', ctv: '#993C1D', directmail: '#444441'
+    video: '#3b82f6', display: '#31c48d', ooh: '#f59e0b',
+    radio: '#ec4899', print: '#6b7280', social: '#8b5cf6',
+    email: '#10b981', ctv: '#f46f0a', directmail: '#64748b'
   };
   const svcNames = {
     video: 'Video', display: 'Display ads', ooh: 'Out of home',
@@ -575,9 +651,9 @@
 
     const maxVal = Math.max(total, projected, baselineReturn) * 1.05;
     let bars = '';
-    bars += barRow('Invested', total, maxVal, '#B5D4F4', '#0C447C');
-    bars += barRow('Projected', projected, maxVal, '#5DCAA5', '#085041');
-    bars += barRow('Without creative', baselineReturn, maxVal, '#D3D1C7', '#5F5E5A');
+    bars += barRow('Invested', total, maxVal, 'rgba(59,130,246,0.35)', '#93bbfd');
+    bars += barRow('Projected', projected, maxVal, 'rgba(49,196,141,0.35)', '#31c48d');
+    bars += barRow('Without creative', baselineReturn, maxVal, 'rgba(107,114,128,0.25)', '#9ca3b0');
     bars += `<div style="margin-top:.85rem;padding-top:.85rem;border-top:0.5px solid var(--border);">`;
     active.forEach(k => {
       const mult = parseFloat(document.querySelector(`.svc-btn[data-key="${k}"]`).dataset.mult) * indMod;
@@ -621,17 +697,17 @@
       data: {
         labels,
         datasets: [
-          { label: 'Projected revenue', data: projected, borderColor: '#1D9E75', backgroundColor: 'rgba(29,158,117,0.07)', fill: true, tension: 0.3, pointRadius: 0, borderWidth: 2 },
-          { label: 'Cumulative investment', data: invested, borderColor: '#378ADD', backgroundColor: 'rgba(55,138,221,0.05)', fill: true, tension: 0.3, pointRadius: 0, borderWidth: 2, borderDash: [4, 3] },
-          { label: 'Without creative', data: baseline, borderColor: '#B4B2A9', backgroundColor: 'transparent', fill: false, tension: 0.3, pointRadius: 0, borderWidth: 1.5, borderDash: [2, 4] }
+          { label: 'Projected revenue', data: projected, borderColor: '#31c48d', backgroundColor: 'rgba(49,196,141,0.08)', fill: true, tension: 0.3, pointRadius: 0, borderWidth: 2 },
+          { label: 'Cumulative investment', data: invested, borderColor: '#3b82f6', backgroundColor: 'rgba(59,130,246,0.06)', fill: true, tension: 0.3, pointRadius: 0, borderWidth: 2, borderDash: [4, 3] },
+          { label: 'Without creative', data: baseline, borderColor: '#6b7280', backgroundColor: 'transparent', fill: false, tension: 0.3, pointRadius: 0, borderWidth: 1.5, borderDash: [2, 4] }
         ]
       },
       options: {
         responsive: true, maintainAspectRatio: false,
         plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ' ' + fmt(ctx.raw) } } },
         scales: {
-          x: { ticks: { font: { size: 11 }, color: '#888', autoSkip: true, maxTicksLimit: 8 }, grid: { display: false } },
-          y: { ticks: { font: { size: 11 }, color: '#888', callback: v => v >= 1000000 ? '$' + (v / 1000000).toFixed(1) + 'M' : '$' + (v / 1000).toFixed(0) + 'k' }, grid: { color: 'rgba(128,128,128,0.08)' } }
+          x: { ticks: { font: { size: 11 }, color: '#6b7280', autoSkip: true, maxTicksLimit: 8 }, grid: { display: false } },
+          y: { ticks: { font: { size: 11 }, color: '#6b7280', callback: v => v >= 1000000 ? '$' + (v / 1000000).toFixed(1) + 'M' : '$' + (v / 1000).toFixed(0) + 'k' }, grid: { color: 'rgba(255,255,255,0.04)' } }
         }
       }
     });
@@ -692,7 +768,6 @@
     document.getElementById('copiedNote').style.display = 'block';
   }
 
-  // Close modal on backdrop click
   document.getElementById('exportModal').addEventListener('click', function (e) {
     if (e.target === this) closeExport();
   });
