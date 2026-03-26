@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="dark" />
   <title>Creative ROI Calculator — Abstrakt Marketing Group</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <style>
@@ -33,30 +34,7 @@
       --radius-lg: 12px;
     }
 
-    @media (prefers-color-scheme: light) {
-      :root {
-        --bg: #ffffff;
-        --bg2: #f1f5f9;
-        --bg3: #e8ecf1;
-        --text: #111827;
-        --text2: #4b5563;
-        --text3: #6b7280;
-        --border: rgba(0,0,0,0.10);
-        --border2: rgba(0,0,0,0.18);
-        --accent: #059669;
-        --accent-dim: rgba(5,150,105,0.08);
-        --accent-text: #047857;
-        --blue: #2563eb;
-        --blue-light: rgba(37,99,235,0.06);
-        --blue-dark: #1d4ed8;
-        --blue-mid: rgba(37,99,235,0.18);
-        --green: #059669;
-        --green-light: #10b981;
-        --amber: #d97706;
-        --orange: #ea580c;
-        --orange-dim: rgba(234,88,12,0.08);
-      }
-    }
+
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
@@ -116,16 +94,15 @@
     .header-logo {
       display: inline-block;
       margin-bottom: 0.75rem;
-      font-size: 18px;
+      font-size: 22px;
       font-weight: 800;
       letter-spacing: -0.02em;
       color: var(--text);
+      text-transform: lowercase;
     }
-    .header-logo span { color: var(--accent); }
+    .header-logo .logo-dot { color: var(--accent); font-size: 28px; line-height: 0; }
 
-    @media (prefers-color-scheme: light) {
-      .header { background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%); }
-    }
+
 
     /* Panels */
     .panel {
@@ -216,11 +193,13 @@
       align-items: center;
       gap: 12px;
       margin-bottom: 0.85rem;
+      flex-wrap: wrap;
     }
     .sl-row:last-child { margin-bottom: 0; }
     .sl-row label { font-size: 13px; color: var(--text2); min-width: 130px; }
     .sl-row input[type=range] {
       flex: 1;
+      min-width: 0;
       -webkit-appearance: none;
       height: 4px;
       border-radius: 2px;
@@ -246,7 +225,13 @@
       border: none;
       box-shadow: 0 0 0 3px rgba(49,196,141,0.2);
     }
-    .sl-val { font-size: 13px; font-weight: 600; color: var(--text); min-width: 100px; text-align: right; }
+    .sl-val { font-size: 13px; font-weight: 600; color: var(--text); min-width: 80px; text-align: right; }
+    @media (max-width: 600px) {
+      .sl-row { flex-direction: column; align-items: stretch; gap: 6px; }
+      .sl-row label { min-width: unset; display: flex; justify-content: space-between; }
+      .sl-row input[type=range] { width: 100%; }
+      .sl-val { text-align: left; min-width: unset; }
+    }
 
     /* Metric cards */
     .metrics {
@@ -303,9 +288,7 @@
     }
     .explain p { font-size: 13px; color: var(--accent-text); line-height: 1.6; }
 
-    @media (prefers-color-scheme: light) {
-      .explain p { color: #065f46; }
-    }
+
 
     /* Chart legend */
     .legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12px; color: var(--text2); margin-bottom: 0.5rem; }
@@ -396,12 +379,13 @@
       text-align: center;
     }
     .footer-brand {
-      font-size: 14px;
-      font-weight: 700;
+      font-size: 16px;
+      font-weight: 800;
       color: var(--text);
       margin-bottom: 0.25rem;
+      text-transform: lowercase;
     }
-    .footer-brand span { color: var(--accent); }
+    .footer-brand .logo-dot { color: var(--accent); font-size: 22px; line-height: 0; }
     .footer-link {
       font-size: 12px;
       color: var(--accent);
@@ -422,7 +406,7 @@
 <div class="wrap">
 
   <div class="header">
-    <div class="header-logo">abstrakt<span>.</span></div>
+    <div class="header-logo">abstrakt<span class="logo-dot">.</span></div>
     <p class="header-eyebrow">Abstrakt Marketing Group — Creative Services</p>
     <h1>What's your creative investment worth?</h1>
     <p>Select your industry, choose your channels, and see projected returns.</p>
@@ -504,7 +488,7 @@
   </div>
 
   <div class="footer">
-    <div class="footer-brand">abstrakt<span>.</span></div>
+    <div class="footer-brand">abstrakt<span class="logo-dot">.</span></div>
     <a class="footer-link" href="https://abstraktmg.com" target="_blank" rel="noopener">abstraktmg.com</a>
     <p class="disclaimer">Multipliers sourced from Nielsen, Magna Global, and Kantar B2B/B2C benchmarks. Industry modifiers based on vertical-specific creative performance data. Actual returns vary by market conditions, campaign execution, and sales cycle length. Projections represent revenue influenced by creative investment — not guaranteed net profit.</p>
   </div>
